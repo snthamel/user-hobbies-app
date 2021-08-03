@@ -20,8 +20,7 @@ export async function addUserHobby(req: Request, res: Response) {
         const hobby = req.body;
         const addedHobby = await addNewUserHobby(userId, hobby);
         return res.json({
-            message: 'Hobby successfully added to the user',
-            data: addedHobby
+            message: 'Hobby successfully added to the user'
         });
     } catch (error) {
         return res.status(400).json({ message: error.message });

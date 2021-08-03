@@ -17,10 +17,8 @@ services:
     container_name: user-hobbies-db
     volumes:
       - mongodb-data:/data/db
-    # networks:
-    #   - db
     ports:
-      - 27107:27017
+      - 27020:27017
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongo 10.10.10.60:27017/test --quiet
       interval: 30s

@@ -16,8 +16,7 @@ export async function createUser(req: Request, res: Response) {
     try {
         const user = await createNewUser(req.body);
         return res.json({
-            message: 'User saved successfully',
-            data: user.toJSON()
+            message: 'User saved successfully'
         });
     } catch (error) {
         return res.status(400).json({ message: error.message });
