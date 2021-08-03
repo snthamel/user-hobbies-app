@@ -2,10 +2,32 @@ version: "3"
 
 services:
   app:
+    container_name: user-hobbies-app
     build:
       context: .
       dockerfile: Dockerfile.dev
     volumes:
-      - ./src:/app/src
+      - .:/app
     ports:
-      - "3000:3000"
+      - 3000:3000
+    depends_on:
+      - database
+  database:
+    image: mongo
+    container_name: user-hobbies-db
+    volumes:
+      - mongodb-data:/data/db
+    # networks:
+    #   - db
+    ports:
+      - 27107:27017
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo 10.10.10.60:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+volumes:
+  mongodb-data:
+    name: mongodb-data

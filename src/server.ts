@@ -2,6 +2,9 @@ import http from 'http';
 import express, { Express } from 'express';
 import morgan from 'morgan';
 
+import CONFIG from './config/config';
+import routes from './routes/index';
+
 const router: Express = express();
 
 // HTTP logging
@@ -24,6 +27,10 @@ router.use((req, res, next) => {
     next();
 });
 
+import './models/index';
+
+router.use('/', routes);
+
 // invalid routes
 router.use((req, res, next) => {
     const error = new Error('not found');
@@ -33,5 +40,5 @@ router.use((req, res, next) => {
 });
 
 const httpServer = http.createServer(router);
-const PORT: any = process.env.PORT ?? 3000;
+const PORT = CONFIG.PORT;
 httpServer.listen(PORT, () => console.log(`The server is running on port ${PORT}`));
