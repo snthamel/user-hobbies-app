@@ -3,7 +3,7 @@ import User, { UserDocument } from "../models/user.model";
 import Hobby, { HobbyDocument } from "../models/hobby.model";
 
 export async function getAllUsers() {
-    return await User.find();
+    return await User.find({}, { name: 1 });
 }
 
 export async function createNewUser(user: DocumentDefinition<UserDocument>) {
@@ -11,7 +11,7 @@ export async function createNewUser(user: DocumentDefinition<UserDocument>) {
 }
 
 export async function getUserHobbiesByUserId(userId: Types.ObjectId) {
-    const user = await User.findOne({ _id: userId }, { hobbies: 1 }).populate('hobbies');
+    const user = await User.findOne({ _id: userId }, { hobbies: 1 }).populate('hobbies', ['_id', 'name', 'passionLevel', 'year']);
     return user?.hobbies || [];
 }
 

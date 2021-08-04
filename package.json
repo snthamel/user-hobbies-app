@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server.ts",
   "scripts": {
-    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec\"",
+    "dev": "nodemon",
     "build": "rm -rf build/ && prettier --write src/ && tsc",
     "test": "jest"
   },
@@ -26,7 +26,6 @@
     "swagger-jsdoc": "5.0.1",
     "swagger-ui-express": "^4.1.6",
     "ts-node": "^10.1.0",
-    "tsoa": "^3.9.0",
     "typescript": "^4.3.5"
   },
   "devDependencies": {

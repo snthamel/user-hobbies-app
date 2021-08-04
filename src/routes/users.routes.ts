@@ -1,18 +1,20 @@
 import express from 'express';
-import { getUserHobbies, addUserHobby, removeUserHobby } from '../controllers/hobby.controller';
-import { getUsers, createUser } from '../controllers/user.controller';
+import UserController from '../controllers/user.controller';
+import HobbyController from '../controllers/hobby.controller';
 import { validateCreateUser, validateGetUserHobbies, validateAddUserHobby, validateRemoveUserHobby } from '../validators/user.validator';
 
 const router = express.Router();
+const userController = new UserController();
+const hobbyController = new HobbyController();
 
-router.get('/', getUsers);
+router.get('/', userController.getUsers);
 
-router.post('/', validateCreateUser, createUser);
+router.post('/', validateCreateUser, userController.createUser);
 
-router.get('/:user_id/hobbies', validateGetUserHobbies, getUserHobbies);
+router.get('/:user_id/hobbies', validateGetUserHobbies, hobbyController.getUserHobbies);
 
-router.post('/:user_id/hobbies', validateAddUserHobby, addUserHobby);
+router.post('/:user_id/hobbies', validateAddUserHobby, hobbyController.addUserHobby);
 
-router.delete('/:user_id/hobbies/:hobby_id', validateRemoveUserHobby, removeUserHobby);
+router.delete('/:user_id/hobbies/:hobby_id', validateRemoveUserHobby, hobbyController.removeUserHobby);
 
 export = router;
