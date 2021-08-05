@@ -12,6 +12,8 @@ services:
       - 3000:3000
     depends_on:
       - database
+    environment:
+      - DB_HOST=database
   database:
     image: mongo
     container_name: user-hobbies-db
