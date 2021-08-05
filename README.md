@@ -4,7 +4,7 @@ A Node.js TypeScript REST API that manages users and user hobbies
 
 ## Requirements
 
-This application can be built and deployed to `Docker` container and Docker compose. For instructions on installing Docker and Docker compose, please visit https://docs.docker.com/get-docker/ and https://docs.docker.com/compose/install/
+This application can be built and deployed to `Docker` container and Docker compose. For instructions on installing Docker and Docker compose (>Version 1.28.5), please visit https://docs.docker.com/get-docker/ and https://docs.docker.com/compose/install/
 
 ## Build
 
