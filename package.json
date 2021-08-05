@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "rm -rf build/ && prettier --write src/ && tsc",
-    "test": "jest"
+    "test": "APP=test jest --testTimeout=10000 --runInBand"
   },
   "keywords": [],
   "author": "Shehan Thamel",
@@ -30,9 +30,14 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.24",
+    "@types/supertest": "^2.0.11",
     "@types/swagger-ui-express": "^4.1.3",
     "concurrently": "^6.2.0",
     "jest": "^27.0.6",
+    "jest-chain": "^1.1.5",
+    "jest-extended": "^0.11.5",
+    "mongodb-memory-server": "^7.3.4",
+    "supertest": "^6.1.4",
     "ts-jest": "^27.0.4"
   },
   "nodemonConfig": {

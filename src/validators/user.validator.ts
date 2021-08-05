@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { checkSchema, validationResult, ValidationError, ErrorFormatter, Schema } from "express-validator/check";
+import { checkSchema, validationResult, ValidationError, ErrorFormatter, Schema } from "express-validator";
 import { Types } from "mongoose";
 import { PASSION_LEVEL } from "../constants/app.constants";
 import moment from 'moment';

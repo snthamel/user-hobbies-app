@@ -3,11 +3,14 @@ import morgan from 'morgan';
 import swaggerUi from "swagger-ui-express";
 
 import routes from './routes/index';
+import CONFIG from './config/config';
 
 export const app: Express = express();
 
 // HTTP logging
-app.use(morgan('dev'));
+if (CONFIG.APP != 'test') {
+    app.use(morgan('dev'));
+}
 
 // request parser
 app.use(express.urlencoded({ extended: true }));
